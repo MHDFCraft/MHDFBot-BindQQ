@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="MHDF-Bot-BindQQ" />
         <module name="MHDF-Bot-BindQQ-BukkitHook" />
+        <module name="MHDF-Bot-BindQQ-BungeeCordHook" />
       </profile>
     </annotationProcessing>
   </component>
