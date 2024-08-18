@@ -1,0 +1,27 @@
+#数据库设置
+DatabaseSettings:
+  #地址
+  Host: "127.0.0.1:3306"
+  #数据库
+  Database: "MHDFBot_BindQQ"
+  #用户
+  User: "root"
+  #密码
+  Password: "root"
+
+#允许聊天
+AllowChat: false
+
+#允许加入的服务器列表
+AllowJoinServerList:
+  - "登录大厅"
+  - "主城"
+
+#允许使用的命令
+AllowUseCommandList:
+  - "/l"
+  - "/reg"
+
+Messages:
+  AntiChat: "&e[梦之Q绑] &c请前往官方QQ群476308572输入#绑定 {Player} {Verify}后再进行操作!"
+  AntiUseCommand: "&e[梦之Q绑] &c请前往官方QQ群476308572输入#绑定 {Player} {Verify}后再进行操作!"

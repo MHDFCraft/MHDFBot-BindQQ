@@ -1,0 +1,56 @@
+########################################################################################################
+#PAPI变量:
+#%BindQQ_isBind%             是否绑定
+#%BindQQ_getQQ%              获取绑定的QQ
+#%BindQQ_getChatTimes%       获取积累聊天数
+#%BindQQ_getDayChatTimes%    获取今日聊天数
+#%BindQQ_getVerifyCode%      获取验证码
+########################################################################################################
+
+#数据库设置
+DatabaseSettings:
+  #地址
+  Host: "127.0.0.1:3306"
+  #数据库
+  Database: "MHDFBot_BindQQ"
+  #用户
+  User: "root"
+  #密码
+  Password: "root"
+
+#聊天互通消息格式
+ChatHookMessage: "&e[梦之Q绑] &6{name}({qq})在{group}说&f: {message}"
+
+#群公告互通聊天格式
+MannounceHookMessage: |-
+  &c&l[群公告]&r&f
+  {text}
+
+#操作列表
+Actions:
+  #绑定完成
+  #============================================
+  #操作列表
+  #[player]|<命令> #玩家执行命令
+  #[console]|<命令> #后台执行命令
+  #[playsound]|<音频>|<音量|<音效> #播放音频
+  #[playsound_pack]|<音频>|<音量|<音效> #播放资源包音频
+  #[message]|<消息第一行>|<消息第二行> #发送消息
+  #[broadcast]|<消息第一行>|<消息第二行> #发送所有人可见的消息
+  #[title]|<消息第一行>|<消息第二行>|淡出时间|停留时间|淡出时间 #发送标题消息
+  #[actionbar]|<消息> #发送ActionBar消息
+  #============================================
+  BindDone:
+    - "[playsound]|BLOCK_ANVIL_PLACE|25|1.3"
+    - "[message]|&e[梦之Q绑] &a绑定成功!,开始你的游戏吧!"
+  AtQQ:
+    - "[playsound]|ENTITY_EXPERIENCE_ORB_PICKUP|25|0.7"
+    - "[title]|&a你在&bQQ群&a中被AT了!|&e请前往&bQQ群&e查看|10|70|20"
+  BindMessage:
+    - "[title]|&c请绑定QQ账户!|&a请在QQ群&b476308572&a中发送&b#绑定 <游戏ID> %BindQQ_getVerifyCode%|0|25|20"
+
+#语言文件设置
+Messages:
+  ReloadDone: "&e[梦之Q绑] &a重载完成!"
+  Bind: "已绑定"
+  NotBind: "未绑定"
