@@ -4,7 +4,7 @@
 
 <div align="center">
 
-# MHDFBot-BindQQ-BindQQ
+# MHDFBot-BindQQ
 
 _✨一款更好用的QQ绑定插件✨_
 
