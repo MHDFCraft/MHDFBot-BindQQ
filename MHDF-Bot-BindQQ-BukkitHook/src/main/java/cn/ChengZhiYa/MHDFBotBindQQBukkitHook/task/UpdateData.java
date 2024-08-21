@@ -11,6 +11,7 @@ public final class UpdateData extends BukkitRunnable {
         for (Player player : Bukkit.getOnlinePlayers()) {
             DatabaseUtil.updatePlayerData(player.getName());
             DatabaseUtil.updatePlayerVerify(player.getName());
+            DatabaseUtil.updateDisableGroupHook(player.getName());
         }
     }
 }
