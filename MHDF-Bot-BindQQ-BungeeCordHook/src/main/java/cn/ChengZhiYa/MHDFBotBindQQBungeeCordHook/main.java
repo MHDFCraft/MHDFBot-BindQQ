@@ -1,6 +1,8 @@
 package cn.ChengZhiYa.MHDFBotBindQQBungeeCordHook;
 
 import cn.ChengZhiYa.MHDFBotBindQQBungeeCordHook.entity.DatabaseConfig;
+import cn.ChengZhiYa.MHDFBotBindQQBungeeCordHook.listener.Chat;
+import cn.ChengZhiYa.MHDFBotBindQQBungeeCordHook.listener.ServerConnect;
 import cn.ChengZhiYa.MHDFBotBindQQBungeeCordHook.util.ConfigUtil;
 import cn.ChengZhiYa.MHDFBotBindQQBungeeCordHook.util.DatabaseUtil;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -37,6 +39,9 @@ public final class main extends Plugin {
                 DatabaseUtil.updatePlayerVerify(player.getName());
             }
         }, 0L, 1L, TimeUnit.SECONDS);
+
+        getProxy().getPluginManager().registerListener(this, new Chat());
+        getProxy().getPluginManager().registerListener(this, new ServerConnect());
 
         getLogger().info("============梦之Q绑-BC连接器============");
         getLogger().info("插件启动完成!");
