@@ -54,6 +54,6 @@ Messages:
   ReloadDone: "&e[梦之Q绑] &a重载完成!"
   Bind: "已绑定"
   NotBind: "未绑定"
-  On: "开启"
-  Off: "关闭"
+  Enable: "开启"
+  Disable: "关闭"
   GroupHook: "&e[梦之Q绑] &a群聊互通已切换为{status}"

@@ -137,7 +137,7 @@ public final class DatabaseUtil {
             getDisableGroupHookHashMap().put(playerName, status);
             if (status) {
                 try (Connection connection = dataSource.getConnection()) {
-                    try (PreparedStatement ps = connection.prepareStatement("insert into mhdfbot_offgrouphook (PlayerName) values (?);")) {
+                    try (PreparedStatement ps = connection.prepareStatement("delete from mhdfbot_offgrouphook where PlayerName=?;")) {
                         ps.setString(1, playerName);
                         ps.executeUpdate();
                     }
@@ -146,7 +146,7 @@ public final class DatabaseUtil {
                 }
             }else {
                 try (Connection connection = dataSource.getConnection()) {
-                    try (PreparedStatement ps = connection.prepareStatement("delete from mhdfbot_offgrouphook where PlayerName=?;")) {
+                    try (PreparedStatement ps = connection.prepareStatement("insert into mhdfbot_offgrouphook (PlayerName) values (?);")) {
                         ps.setString(1, playerName);
                         ps.executeUpdate();
                     }
@@ -231,10 +231,5 @@ public final class DatabaseUtil {
     public static PlayerVerify getPlayerVerify(String playerName) {
         updatePlayerVerify(playerName);
         return getPlayerVerifyHashMap().get(playerName);
-    }
-
-    public static boolean getDisableGroupHook(String playerName) {
-        updateDisableGroupHook(playerName);
-        return getDisableGroupHookHashMap().get(playerName);
     }
 }

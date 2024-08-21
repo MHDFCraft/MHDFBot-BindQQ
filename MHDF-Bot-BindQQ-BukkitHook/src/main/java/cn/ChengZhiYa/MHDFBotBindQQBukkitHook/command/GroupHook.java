@@ -18,10 +18,10 @@ public final class GroupHook implements CommandExecutor {
         String message = main.instance.getConfig().getString("Messages.GroupHook");
         if (ifPlayerDisableGroupHook(sender.getName())) {
             setGroupHook(sender.getName(),true);
-            sender.sendMessage(colorMessage(Objects.requireNonNull(message).replaceAll("\\{status}", Objects.requireNonNull(main.instance.getConfig().getString("Messages.On")))));
+            sender.sendMessage(colorMessage(Objects.requireNonNull(message).replaceAll("\\{status}", Objects.requireNonNull(main.instance.getConfig().getString("Messages.Enable")))));
         }else {
             setGroupHook(sender.getName(),false);
-            sender.sendMessage(colorMessage(Objects.requireNonNull(message).replaceAll("\\{status}", Objects.requireNonNull(main.instance.getConfig().getString("Messages.Off")))));
+            sender.sendMessage(colorMessage(Objects.requireNonNull(message).replaceAll("\\{status}", Objects.requireNonNull(main.instance.getConfig().getString("Messages.Disable")))));
         }
         return false;
     }

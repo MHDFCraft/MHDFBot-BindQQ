@@ -12,7 +12,7 @@ public final class Reload implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
         main.instance.reloadConfig();
-        sender.sendMessage(colorMessage("Messages.ReloadDone"));
+        sender.sendMessage(colorMessage(main.instance.getConfig().getString("Messages.ReloadDone")));
         return false;
     }
 }
