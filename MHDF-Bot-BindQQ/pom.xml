@@ -6,7 +6,7 @@
 
     <groupId>cn.ChengZhiYa</groupId>
     <artifactId>MHDF-Bot-BindQQ</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>MHDF-Bot-BindQQ</name>
 
     <properties>
@@ -82,7 +82,7 @@
         <dependency>
             <groupId>cn.ChengZhiYa</groupId>
             <artifactId>MHDF-Bot</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

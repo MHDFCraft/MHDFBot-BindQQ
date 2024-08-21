@@ -16,6 +16,7 @@ import java.util.Objects;
 
 import static cn.ChengZhiYa.MHDFBotBindQQBukkitHook.util.ActionUtil.runAction;
 import static cn.ChengZhiYa.MHDFBotBindQQBukkitHook.util.DatabaseUtil.getQqBindList;
+import static cn.ChengZhiYa.MHDFBotBindQQBukkitHook.util.DatabaseUtil.ifPlayerDisableGroupHook;
 import static cn.ChengZhiYa.MHDFBotBukkitHook.util.MessageUtil.colorMessage;
 
 public final class WebSocket implements Listener {
@@ -69,14 +70,16 @@ public final class WebSocket implements Listener {
                 String senderName = data.getString("sender_name");
                 String message = data.getString("message");
 
-                Bukkit.broadcast(
-                        colorMessage(Objects.requireNonNull(main.instance.getConfig().getString("ChatHookMessage")))
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if (!ifPlayerDisableGroupHook(player.getName())) {
+                        player.sendMessage(colorMessage(Objects.requireNonNull(main.instance.getConfig().getString("ChatHookMessage")))
                                 .replaceAll("\\{name}", senderName)
                                 .replaceAll("\\{qq}", String.valueOf(senderId))
                                 .replaceAll("\\{group}", String.valueOf(groupId))
                                 .replaceAll("\\{message}", message)
-                        , "MHDFBotBindQQ.default"
-                );
+                        );
+                    }
+                }
                 break;
             }
             case "mannounce": {

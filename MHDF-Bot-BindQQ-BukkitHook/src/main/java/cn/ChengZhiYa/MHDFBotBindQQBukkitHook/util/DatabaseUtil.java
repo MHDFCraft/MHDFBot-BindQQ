@@ -22,6 +22,8 @@ public final class DatabaseUtil {
     static final HashMap<Long, List<String>> qqBindHashMap = new HashMap<>();
     @Getter
     static final HashMap<String, PlayerVerify> playerVerifyHashMap = new HashMap<>();
+    @Getter
+    static final HashMap<String, Boolean> disableGroupHookHashMap = new HashMap<>();
 
     private static HikariDataSource dataSource;
 
@@ -69,6 +71,18 @@ public final class DatabaseUtil {
                     ps.executeUpdate();
                 }
             }
+            try (Connection connection = dataSource.getConnection()) {
+                try (PreparedStatement ps = connection.prepareStatement(
+                        "CREATE TABLE IF NOT EXISTS mhdfbot_offgrouphook" +
+                                "(" +
+                                "    PlayerName VARCHAR(50) NOT NULL COMMENT '玩家ID'," +
+                                "    PRIMARY KEY (PlayerName)" +
+                                ")" +
+                                "COLLATE=utf8mb4_bin;"
+                )) {
+                    ps.executeUpdate();
+                }
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -77,6 +91,19 @@ public final class DatabaseUtil {
     public static boolean ifPlayerDataExist(String playerName) {
         try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement("select * from mhdfbot_bindqq where PlayerName=?;")) {
+                ps.setString(1, playerName);
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean ifPlayerDisableGroupHook(String playerName) {
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement("select * from mhdfbot_offgrouphook where PlayerName=?;")) {
                 ps.setString(1, playerName);
                 try (ResultSet rs = ps.executeQuery()) {
                     return rs.next();
@@ -101,6 +128,31 @@ public final class DatabaseUtil {
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public static void setGroupHook(String playerName,boolean status) {
+        Bukkit.getScheduler().runTaskAsynchronously(main.instance, () -> {
+            getDisableGroupHookHashMap().put(playerName, status);
+            if (status) {
+                try (Connection connection = dataSource.getConnection()) {
+                    try (PreparedStatement ps = connection.prepareStatement("insert into mhdfbot_offgrouphook (PlayerName) values (?);")) {
+                        ps.setString(1, playerName);
+                        ps.executeUpdate();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }else {
+                try (Connection connection = dataSource.getConnection()) {
+                    try (PreparedStatement ps = connection.prepareStatement("delete from mhdfbot_offgrouphook where PlayerName=?;")) {
+                        ps.setString(1, playerName);
+                        ps.executeUpdate();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
@@ -162,6 +214,10 @@ public final class DatabaseUtil {
         });
     }
 
+    public static void updateDisableGroupHook(String playerName) {
+        Bukkit.getScheduler().runTaskAsynchronously(main.instance, () -> getDisableGroupHookHashMap().put(playerName, ifPlayerDisableGroupHook(playerName)));
+    }
+
     public static List<String> getQqBindList(Long qq) {
         updateQqBindList(qq);
         return getQqBindHashMap().get(qq) != null ? getQqBindHashMap().get(qq) : new ArrayList<>();
@@ -175,5 +231,10 @@ public final class DatabaseUtil {
     public static PlayerVerify getPlayerVerify(String playerName) {
         updatePlayerVerify(playerName);
         return getPlayerVerifyHashMap().get(playerName);
+    }
+
+    public static boolean getDisableGroupHook(String playerName) {
+        updateDisableGroupHook(playerName);
+        return getDisableGroupHookHashMap().get(playerName);
     }
 }

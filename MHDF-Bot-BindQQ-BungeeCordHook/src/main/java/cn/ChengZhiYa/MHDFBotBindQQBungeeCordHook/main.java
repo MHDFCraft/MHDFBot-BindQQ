@@ -24,7 +24,6 @@ public final class main extends Plugin {
         saveDefaultConfig();
         reloadConfig();
 
-
         connectDatabase(new DatabaseConfig(
                 ConfigUtil.getConfig().getString("DatabaseSettings.Host"),
                 ConfigUtil.getConfig().getString("DatabaseSettings.Database"),

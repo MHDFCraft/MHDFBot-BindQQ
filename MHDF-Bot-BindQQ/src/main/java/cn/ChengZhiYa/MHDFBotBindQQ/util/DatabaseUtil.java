@@ -105,15 +105,17 @@ public final class DatabaseUtil {
     }
 
     public static List<String> getQqBindList(Long QQ) {
-        List<String> qqBindList = new ArrayList<>();
         if (getQqBindHashMap().get(QQ) == null) {
             try (Connection connection = dataSource.getConnection()) {
                 try (PreparedStatement ps = connection.prepareStatement("select * from mhdfbot_bindqq where QQ=?;")) {
                     ps.setLong(1, QQ);
                     try (ResultSet rs = ps.executeQuery()) {
+                        List<String> qqBindList = new ArrayList<>();
                         while (rs.next()) {
                             qqBindList.add(rs.getString("PlayerName"));
                         }
+                        getQqBindHashMap().put(QQ, qqBindList);
+                        return qqBindList;
                     }
                 }
             } catch (SQLException e) {
@@ -122,8 +124,6 @@ public final class DatabaseUtil {
         } else {
             return getQqBindHashMap().get(QQ);
         }
-        getQqBindHashMap().put(QQ, qqBindList);
-        return qqBindList;
     }
 
     public static void bind(PlayerData playerData) {

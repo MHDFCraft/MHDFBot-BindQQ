@@ -47,6 +47,7 @@ public final class main extends MHDFBotPlugin {
         registerListener(new FriendAddRequest());
         registerListener(new GroupMessage());
         registerListener(new PrivateMessage());
+        registerListener(new WebSocket());
 
         new UpdatePlayerVerify().runTaskAsynchronouslyTimer(0L, 1L);
         new ClearPlayerVerify().runTaskAsynchronouslyTimer(0L, 60L);

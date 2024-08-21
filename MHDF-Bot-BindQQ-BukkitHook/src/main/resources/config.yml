@@ -47,10 +47,13 @@ Actions:
     - "[playsound]|ENTITY_EXPERIENCE_ORB_PICKUP|25|0.7"
     - "[title]|&a你在&bQQ群&a中被AT了!|&e请前往&bQQ群&e查看|10|70|20"
   BindMessage:
-    - "[title]|&c请绑定QQ账户!|&a请在QQ群&b476308572&a中发送&b#绑定 <游戏ID> %BindQQ_getVerifyCode%|0|25|20"
+    - "[title]|&c请绑定QQ账户!|&a请在QQ群&b476308572&a中发送&b#绑定 %player_name% %BindQQ_getVerifyCode%|0|25|20"
 
 #语言文件设置
 Messages:
   ReloadDone: "&e[梦之Q绑] &a重载完成!"
   Bind: "已绑定"
   NotBind: "未绑定"
+  On: "开启"
+  Off: "关闭"
+  GroupHook: "&e[梦之Q绑] &a群聊互通已切换为{status}"

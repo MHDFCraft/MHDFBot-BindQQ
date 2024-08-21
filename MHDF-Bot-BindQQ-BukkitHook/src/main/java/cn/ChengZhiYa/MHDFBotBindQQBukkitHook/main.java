@@ -1,8 +1,10 @@
 package cn.ChengZhiYa.MHDFBotBindQQBukkitHook;
 
+import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.command.GroupHook;
 import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.command.Reload;
 import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.entity.DatabaseConfig;
 import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.hook.PlaceholderAPI;
+import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.listener.PlayerChat;
 import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.listener.PlayerJoin;
 import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.listener.WebSocket;
 import cn.ChengZhiYa.MHDFBotBindQQBukkitHook.task.BindMessage;
@@ -40,10 +42,12 @@ public final class main extends JavaPlugin {
         ));
         intiDatabase();
 
+        Bukkit.getPluginManager().registerEvents(new PlayerChat(), this);
         Bukkit.getPluginManager().registerEvents(new WebSocket(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
 
         Objects.requireNonNull(getCommand("bindqqreload")).setExecutor(new Reload());
+        Objects.requireNonNull(getCommand("grouphook")).setExecutor(new GroupHook());
 
         new BindMessage().runTaskTimerAsynchronously(this, 0L, 20L);
         new UpdateData().runTaskTimerAsynchronously(this, 0L, 20L);

@@ -20,8 +20,14 @@ MessageSettings:
   #AT用户
   At: true
 
-#聊天同步
-ChatHook: true
+#群聊聊天同步
+GroupChatHook: true
+
+#游戏聊天同步
+GameChatHook: true
+
+#聊天互通消息格式
+ChatHookMessage: "&e[梦之Q绑] &6{name}说&f: {message}"
 
 #群公告同步
 MannounceHook: true

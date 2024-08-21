@@ -9,8 +9,13 @@ commands:
   bindqqreload:
     description: 重载
     permission: MHDFBotBindQQ.admin
+  grouphook:
+    description: 切换群聊互通功提示
+    permission: MHDFBotBindQQ.grouphok
 permissions:
   MHDFBotBindQQ.default:
     default: true
   MHDFBotBindQQ.admin:
+    default: op
+  MHDFBotBindQQ.grouphok:
     default: op

@@ -4,7 +4,7 @@
   <groupId>cn.ChengZhiYa</groupId>
   <artifactId>MHDF-Bot-BindQQ-BukkitHook</artifactId>
   <name>MHDF-Bot-BindQQ-BukkitHook</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <build>
     <resources>
       <resource>
@@ -76,7 +76,7 @@
     <dependency>
       <groupId>cn.ChengZhiYa</groupId>
       <artifactId>MHDF-Bot-BukkitHook</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
