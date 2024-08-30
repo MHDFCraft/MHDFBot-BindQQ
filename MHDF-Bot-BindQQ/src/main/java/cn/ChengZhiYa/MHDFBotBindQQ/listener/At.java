@@ -14,7 +14,7 @@ public final class At implements Listener {
     @EventHandler
     public void onGroupMessage(GroupMessageEvent event) {
         if (main.instance.getConfig().getStringList("AllowUseGroup").contains(String.valueOf(event.getGroupId()))) {
-            Pattern pattern = Pattern.compile("\\[CQ:at,qq=(.*?)]");
+            Pattern pattern = Pattern.compile("\\[CQ:at,qq=(\\d+)(?:,name=[^]]+)?]");
             Matcher matcher = pattern.matcher(event.getMessage());
 
             while (matcher.find()) {

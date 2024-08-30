@@ -15,7 +15,7 @@ public final class Chat implements Listener {
     public void onGroupMessage(GroupMessageEvent event) {
         if (main.instance.getConfig().getStringList("AllowUseGroup").contains(String.valueOf(event.getGroupId()))) {
             if (main.instance.getConfig().getBoolean("GroupChatHook")) {
-                Pattern pattern = Pattern.compile("\\[.*?\\]");
+                Pattern pattern = Pattern.compile("\\[.*?]");
                 Matcher matcher = pattern.matcher(event.getMessage());
                 String message = matcher.replaceAll("");
                 if (!message.isEmpty()) {
@@ -23,7 +23,7 @@ public final class Chat implements Listener {
                     data.put("group_id", event.getGroupId());
                     data.put("sender_id", event.getSender().getUserId());
                     data.put("sender_name",
-                            event.getSender().getCard()!=null&&!event.getSender().getCard().isEmpty() ? event.getSender().getCard() :
+                            event.getSender().getCard() != null && !event.getSender().getCard().isEmpty() ? event.getSender().getCard() :
                                     event.getSender().getNickName());
                     data.put("message", message);
                     WebSocket.send("chat", data);
