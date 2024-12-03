@@ -46,8 +46,8 @@ public final class Main extends JavaPlugin {
         registerCommand(
                 new Command("unbind")
                         .executor(new UnBind())
-                        .description(i18n("commands.unbind.description"))
-                        .usage(i18n("commands.unbind.usage"))
+                        .description(i18n("commands.unBind.description"))
+                        .usage(i18n("commands.unBind.usage"))
         );
 
         registerCommand(
@@ -60,8 +60,8 @@ public final class Main extends JavaPlugin {
         registerCommand(
                 new Command("infoqq")
                         .executor(new InfoQQ())
-                        .description(i18n("commands.infoqq.description"))
-                        .usage(i18n("commands.infoqq.usage"))
+                        .description(i18n("commands.infoQq.description"))
+                        .usage(i18n("commands.infoQq.usage"))
         );
 
         registerListener(new At());

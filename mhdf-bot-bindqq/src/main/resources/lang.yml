@@ -16,7 +16,7 @@ commands:
     description: "查询账户绑定信息"
     noBind: "{player}没有被人绑定!"
     done: "{player}被{qq}绑定了!"
-  infoQQ:
+  infoQq:
     usage: "infoQQ <QQ>"
     description: "查询QQ绑定信息"
     noBind: "{QQ}没有绑定任何账户!"
