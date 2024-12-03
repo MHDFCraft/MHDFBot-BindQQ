@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mhdf-bot-bindqq-bukkithook/mhdf-bot-bindqq-bukkithook.iml" filepath="$PROJECT_DIR$/mhdf-bot-bindqq-bukkithook/mhdf-bot-bindqq-bukkithook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mhdf-bot-bindqq-bungeehook/mhdf-bot-bindqq-bungeehook.iml" filepath="$PROJECT_DIR$/mhdf-bot-bindqq-bungeehook/mhdf-bot-bindqq-bungeehook.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,4 +1,4 @@
 name: MHDF-Bot-BindQQ
 version: 1.0.0
-main: cn.chengzhiya.mhdfbotbindqq.main
+main: cn.chengzhiya.mhdfbotbindqq.Main
 authoendrs: [ ChengZhiYa ]
