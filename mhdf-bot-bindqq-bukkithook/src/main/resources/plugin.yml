@@ -1,4 +1,4 @@
-name: MHDF-Bot-BindQQ-bukkithook
+name: mhdf-bot-bindqq-bukkithook
 version: '${project.version}'
 main: cn.chengzhiya.mhdfbotbindqqbukkithook.Main
 api-version: '1.20'
