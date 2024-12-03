@@ -6,7 +6,7 @@ load: STARTUP
 depend: [ PlaceholderAPI ]
 softdepend: [ AuthMe, MHDF-Login ]
 commands:
-  reloadable:
+  bindqqreload:
     description: 重载
     permission: mhdfbotbindqq.admin
 permissions:
