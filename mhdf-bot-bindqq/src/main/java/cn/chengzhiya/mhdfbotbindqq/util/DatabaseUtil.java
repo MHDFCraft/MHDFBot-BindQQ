@@ -34,6 +34,13 @@ public final class DatabaseUtil {
      * @param database 数据库配置实例
      */
     public static void connectDatabase(DatabaseConfig database) {
+        // 加载数据库驱动
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("数据库驱动加载失败");
+        }
+
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:mysql://" + database.host() + "/" + database.database() + "?autoReconnect=true&serverTimezone=" + TimeZone.getDefault().getID());
         config.setUsername(database.username());

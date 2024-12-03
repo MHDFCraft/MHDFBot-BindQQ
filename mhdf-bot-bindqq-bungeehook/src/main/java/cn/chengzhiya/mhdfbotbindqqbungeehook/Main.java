@@ -27,10 +27,10 @@ public final class Main extends Plugin {
         reloadConfig();
 
         connectDatabase(new DatabaseConfig(
-                ConfigUtil.getConfig().getString("DatabaseSettings.Host"),
-                ConfigUtil.getConfig().getString("DatabaseSettings.Database"),
-                ConfigUtil.getConfig().getString("DatabaseSettings.User"),
-                ConfigUtil.getConfig().getString("DatabaseSettings.Password")
+                ConfigUtil.getConfig().getString("databaseSettings.host"),
+                ConfigUtil.getConfig().getString("databaseSettings.database"),
+                ConfigUtil.getConfig().getString("databaseSettings.user"),
+                ConfigUtil.getConfig().getString("databaseSettings.password")
         ));
         intiDatabase();
 
