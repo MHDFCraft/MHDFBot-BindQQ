@@ -1,0 +1,58 @@
+# 数据库设置
+databaseSettings:
+  # 地址
+  host: "127.0.0.1:3306"
+  # 数据库
+  database: "MHDFBot_BindQQ"
+  # 用户
+  user: "root"
+  # 密码
+  password: "root"
+
+# 允许使用的群
+allowUseGroup:
+  - "1005396066"
+
+# 消息设置
+messageSettings:
+  # 回复消息
+  reply: true
+  # AT用户
+  at: true
+
+# 群聊聊天同步
+groupChatHook: true
+
+# 游戏聊天同步
+gameChatHook: true
+
+# 聊天互通消息格式
+chatHookMessage: "&e[梦之Q绑] &6{name}说&f: {message}"
+
+# 群公告同步
+mannounceHook: true
+
+#绑定设置
+bindSettings:
+  # 验证玩家开关
+  verify: false
+  # 允许解除绑定
+  allowUnBind: true
+  # 单个QQ最多可以绑定的用户数量
+  maxBind: 1
+  # 修改群昵称
+  changeName: true
+  # 修改群昵称忽略管理员或群主
+  changeNameIgnoreAdmin: true
+  # 绑定QQ最低QQ等级要求
+  minQQLevel: 6
+  # 绑定ID字符限制
+  bindNameRegex: "^[a-zA-Z0-9_]+$"
+  # 绑定ID最小长度
+  bindNameMinLength: 3
+  # 绑定ID最大长度
+  bindNameMaxLength: 16
+  # 绕过绑定上线的QQ
+  bypassMaxBindList:
+    - "2624246773"
+    - "292200693"

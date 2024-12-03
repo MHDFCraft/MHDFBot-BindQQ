@@ -1,0 +1,60 @@
+prefix: "[梦之Q绑] "
+
+commands:
+  bind:
+    usage: "bind <QQ> <玩家ID>"
+    description: "绑定账户"
+    alwaysBind: "{player}已经被{QQ}绑定了!"
+    done: "成功将{player}绑定给{qq}!"
+  unBind:
+    usage: "bind <玩家ID>"
+    description: "解除绑定账户"
+    noBind: "{player}没有被人绑定!"
+    done: "成功解除{player}的绑定!"
+  info:
+    usage: "info <玩家ID>"
+    description: "查询账户绑定信息"
+    noBind: "{player}没有被人绑定!"
+    done: "{player}被{qq}绑定了!"
+  infoQQ:
+    usage: "infoQQ <QQ>"
+    description: "查询QQ绑定信息"
+    noBind: "{QQ}没有绑定任何账户!"
+    done: "{qq}绑定了{player}!"
+
+messages:
+  bind:
+    usage: |-
+      用法错误,正确用法#绑定 <游戏ID> [验证码]
+    alwaysBind: |-
+      {player}已经被{qq}绑定了!
+    maxBind: |-
+      你已经绑定了{count}个账户了,无法再绑定更多账户了!
+    minQQLevel: |-
+      你的QQ等级小于{level}级,无法绑定账户!
+    bindNameRegex: |-
+      你想绑定的游戏ID名称无效!
+    bindNameMinLength: |-
+      游戏ID必须最少得有{length}个字!
+    bindNameMaxLength: |-
+      游戏ID必须最多只能有{length}个字!
+    verifyCodeError: |-
+      验证码错误,无法验证身份!
+    done: |-
+      成功绑定{player}!
+  unBind:
+    usage: |-
+      用法错误,正确用法#解除绑定 <游戏ID>
+    noBind: |-
+      你并没有绑定{player}这个账户!
+    done: |-
+      成功解除绑定{player}!
+  changePassword:
+    usage: |-
+      用法错误,正确用法#重置密码 <游戏ID>
+    noBind: |-
+      你并没有绑定{player}这个账户!
+    startChange: |-
+      身份验证完成,请添加机器人好友后,将新密码发送至<机器人私信>!
+    done: |-
+      你成功修改了{player}的密码为{password}!

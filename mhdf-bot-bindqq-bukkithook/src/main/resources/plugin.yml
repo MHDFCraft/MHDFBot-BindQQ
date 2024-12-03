@@ -1,0 +1,16 @@
+name: MHDF-Bot-BindQQ-bukkithook
+version: '${project.version}'
+main: cn.chengzhiya.mhdfbotbindqqbukkithook.Main
+api-version: '1.20'
+load: STARTUP
+depend: [ PlaceholderAPI ]
+softdepend: [ AuthMe, MHDF-Login ]
+commands:
+  reloadable:
+    description: 重载
+    permission: mhdfbotbindqq.admin
+permissions:
+  mhdfbotbindqq.default:
+    default: true
+  mhdfbotbindqq.admin:
+    default: op

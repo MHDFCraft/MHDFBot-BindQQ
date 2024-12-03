@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.chengzhiya</groupId>
+    <artifactId>mhdfbot-bindqq</artifactId>
+    <packaging>pom</packaging>
+    <version>2.0.0</version>
+
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>AUTHORS</exclude>
+                                        <exclude>.api_description</exclude>
+                                        <exclude>LICENSE</exclude>
+                                        <exclude>README</exclude>
+                                        <exclude>INFO_SRC</exclude>
+                                        <exclude>INFO_BIN</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>*.txt</exclude>
+                                        <exclude>*.md</exclude>
+                                        <exclude>*.html</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>alimaven-public</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+        <repository>
+            <id>maven-maven2</id>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>alimaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <modules>
+        <module>mhdf-bot-bindqq</module>
+        <module>mhdf-bot-bindqq-bukkithook</module>
+        <module>mhdf-bot-bindqq-bungeehook</module>
+    </modules>
+</project>
