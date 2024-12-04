@@ -7,7 +7,7 @@ commands:
     alwaysBind: "{player}已经被{QQ}绑定了!"
     done: "成功将{player}绑定给{qq}!"
   unBind:
-    usage: "bind <玩家ID>"
+    usage: "unbind <玩家ID>"
     description: "解除绑定账户"
     noBind: "{player}没有被人绑定!"
     done: "成功解除{player}的绑定!"
@@ -17,7 +17,7 @@ commands:
     noBind: "{player}没有被人绑定!"
     done: "{player}被{qq}绑定了!"
   infoQq:
-    usage: "infoQQ <QQ>"
+    usage: "infoqq <QQ>"
     description: "查询QQ绑定信息"
     noBind: "{QQ}没有绑定任何账户!"
     done: "{qq}绑定了{player}!"

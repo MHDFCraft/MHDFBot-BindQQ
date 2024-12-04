@@ -11,7 +11,7 @@ public final class Bind implements CommandExecutor {
     @Override
     public void onCommand(String command, String[] args) {
         if (args.length < 2) {
-            Main.instance.getLogger().error("{}{}", i18n("prefix"), i18n("commands.Bind.Usage"));
+            Main.instance.getLogger().error("{}{}", i18n("prefix"), i18n("commands.bind.usage"));
             return;
         }
 
@@ -19,13 +19,13 @@ public final class Bind implements CommandExecutor {
         String playerName = args[1];
 
         if (DatabaseUtil.ifPlayerDataExist(playerName)) {
-            Main.instance.getLogger().error("{}{}", i18n("prefix"), i18n("commands.Bind.NoBind")
+            Main.instance.getLogger().error("{}{}", i18n("prefix"), i18n("commands.bind.alwaysBind")
                     .replace("{player}", playerName)
                     .replace("{qq}", String.valueOf(qq)));
         }
 
         DatabaseUtil.bind(new PlayerData(playerName, qq));
-        Main.instance.getLogger().info("{}{}", i18n("prefix"), i18n("commands.Bind.BindDone")
+        Main.instance.getLogger().info("{}{}", i18n("prefix"), i18n("commands.bind.done")
                 .replace("{player}", playerName)
                 .replace("{qq}", String.valueOf(qq)));
     }
