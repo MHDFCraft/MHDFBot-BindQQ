@@ -96,7 +96,7 @@ public final class GroupMessage implements Listener {
                 if (playerData != null) {
                     messageBuilder.text(i18n("messages.bind.alwaysBind")
                             .replace("{player}", playerName)
-                            .replace("{qq}", String.valueOf(playerData.getQQ())));
+                            .replace("{qq}", String.valueOf(playerData.getQq())));
                     break;
                 }
 
@@ -132,7 +132,7 @@ public final class GroupMessage implements Listener {
                 }
 
                 // 目标游戏ID是被其他人绑定的
-                if (!Objects.equals(playerData.getQQ(), event.getSender().getUserId())) {
+                if (!Objects.equals(playerData.getQq(), event.getSender().getUserId())) {
                     messageBuilder.text(i18n("messages.unBind.noBind")
                             .replace("{player}", playerName));
                     break;
@@ -161,7 +161,7 @@ public final class GroupMessage implements Listener {
                 }
 
                 // 目标游戏ID是被其他人绑定的
-                if (!Objects.equals(playerData.getQQ(), event.getSender().getUserId())) {
+                if (!Objects.equals(playerData.getQq(), event.getSender().getUserId())) {
                     messageBuilder.text(i18n("messages.changePassword.noBind")
                             .replace("{player}", playerName));
                     break;

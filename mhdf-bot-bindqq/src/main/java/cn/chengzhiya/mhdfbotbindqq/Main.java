@@ -70,6 +70,7 @@ public final class Main extends JavaPlugin {
         registerListener(new Mannounce());
         registerListener(new FriendAddRequest());
         registerListener(new GroupMessage());
+        registerListener(new LeaveGroup());
         registerListener(new PrivateMessage());
         registerListener(new WebSocket());
 

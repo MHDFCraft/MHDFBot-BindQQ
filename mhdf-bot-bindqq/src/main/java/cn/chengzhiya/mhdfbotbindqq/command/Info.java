@@ -26,6 +26,6 @@ public final class Info implements CommandExecutor {
         PlayerData playerData = DatabaseUtil.getPlayerData(playerName);
         Main.instance.getLogger().info("{}{}", i18n("prefix"), i18n("commands.info.done")
                 .replace("{player}", playerName)
-                .replace("{qq}", String.valueOf(Objects.requireNonNull(playerData).getQQ())));
+                .replace("{qq}", String.valueOf(Objects.requireNonNull(playerData).getQq())));
     }
 }

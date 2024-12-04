@@ -4,20 +4,20 @@ import lombok.Data;
 
 @Data
 public final class PlayerData {
-    private String PlayerName;
-    private Long QQ;
-    private Long ChatTimes;
-    private Integer DayChatTimes;
+    private final String playerName;
+    private final Long qq;
+    private Long chatTimes;
+    private Integer dayChatTimes;
 
-    public PlayerData(String PlayerName, Long QQ) {
-        this.PlayerName = PlayerName;
-        this.QQ = QQ;
+
+    public PlayerData(String playerName, Long qq) {
+        this(playerName, qq, 0L, 0);
     }
 
-    public PlayerData(String PlayerName, Long QQ, Long ChatTimes, Integer DayChatTimes) {
-        this.PlayerName = PlayerName;
-        this.QQ = QQ;
-        this.ChatTimes = ChatTimes;
-        this.DayChatTimes = DayChatTimes;
+    public PlayerData(String playerName, Long qq, Long chatTimes, Integer dayChatTimes) {
+        this.playerName = playerName;
+        this.qq = qq;
+        this.chatTimes = chatTimes;
+        this.dayChatTimes = dayChatTimes;
     }
 }

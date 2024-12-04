@@ -34,7 +34,7 @@ public final class PlaceholderAPI extends PlaceholderExpansion {
                     colorMessage(Main.instance.getConfig().getString("messages.noBind"));
         }
         if (params.equalsIgnoreCase("getqq")) {
-            return DatabaseUtil.ifPlayerDataExist(player.getName()) ? String.valueOf(Objects.requireNonNull(DatabaseUtil.getPlayerData(player.getName())).getQQ()) :
+            return DatabaseUtil.ifPlayerDataExist(player.getName()) ? String.valueOf(Objects.requireNonNull(DatabaseUtil.getPlayerData(player.getName())).getQq()) :
                     colorMessage(Main.instance.getConfig().getString("messages.noBind"));
         }
         if (params.equalsIgnoreCase("getchattimes")) {

@@ -32,6 +32,9 @@ chatHookMessage: "&e[梦之Q绑] &6{name}说&f: {message}"
 # 群公告同步
 mannounceHook: true
 
+# 退群自动解除绑定
+leaveGroupUnBind: true
+
 #绑定设置
 bindSettings:
   # 验证玩家开关

@@ -169,14 +169,14 @@ public final class DatabaseUtil {
         MHDFBot.getScheduler().runTaskAsynchronously(() -> {
             getPlayerDataHashMap().put(playerData.getPlayerName(), playerData);
 
-            List<String> qqBindList = getQqBindList(playerData.getQQ());
+            List<String> qqBindList = getQqBindList(playerData.getQq());
             qqBindList.add(playerData.getPlayerName());
-            getQqBindHashMap().put(playerData.getQQ(), qqBindList);
+            getQqBindHashMap().put(playerData.getQq(), qqBindList);
 
             {
                 JSONObject data = new JSONObject();
                 data.put("playerName", playerData.getPlayerName());
-                data.put("qq", playerData.getQQ());
+                data.put("qq", playerData.getQq());
 
                 MHDFBot.getMinecraftWebSocketServer().send("bindDone", data);
             }
@@ -184,7 +184,7 @@ public final class DatabaseUtil {
             try (Connection connection = dataSource.getConnection()) {
                 try (PreparedStatement ps = connection.prepareStatement("insert into mhdfbot_bindqq (PlayerName, QQ) values (?,?);")) {
                     ps.setString(1, playerData.getPlayerName());
-                    ps.setLong(2, playerData.getQQ());
+                    ps.setLong(2, playerData.getQq());
                     ps.executeUpdate();
                 }
             } catch (SQLException e) {
@@ -202,14 +202,14 @@ public final class DatabaseUtil {
         MHDFBot.getScheduler().runTaskAsynchronously(() -> {
             getPlayerDataHashMap().remove(playerData.getPlayerName());
 
-            List<String> qqBindList = getQqBindList(playerData.getQQ());
+            List<String> qqBindList = getQqBindList(playerData.getQq());
             qqBindList.remove(playerData.getPlayerName());
-            getQqBindHashMap().put(playerData.getQQ(), qqBindList);
+            getQqBindHashMap().put(playerData.getQq(), qqBindList);
 
             {
                 JSONObject data = new JSONObject();
                 data.put("playerName", playerData.getPlayerName());
-                data.put("qq", playerData.getQQ());
+                data.put("qq", playerData.getQq());
 
                 MHDFBot.getMinecraftWebSocketServer().send("unBindDone", data);
             }
@@ -236,7 +236,7 @@ public final class DatabaseUtil {
 
             try (Connection connection = dataSource.getConnection()) {
                 try (PreparedStatement ps = connection.prepareStatement("update mhdfbot_bindqq set QQ=?, ChatTimes=?, DayChatTimes=? where PlayerName=?;")) {
-                    ps.setLong(1, playerData.getQQ());
+                    ps.setLong(1, playerData.getQq());
                     ps.setLong(2, playerData.getChatTimes());
                     ps.setLong(3, playerData.getDayChatTimes());
                     ps.setString(4, playerData.getPlayerName());
