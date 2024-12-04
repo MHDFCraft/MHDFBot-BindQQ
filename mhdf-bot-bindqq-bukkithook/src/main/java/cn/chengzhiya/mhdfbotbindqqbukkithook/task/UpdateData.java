@@ -9,8 +9,8 @@ public final class UpdateData extends BukkitRunnable {
     @Override
     public void run() {
         for (Player player : Bukkit.getOnlinePlayers()) {
-            DatabaseUtil.updatePlayerData(player.getName());
-            DatabaseUtil.updatePlayerVerify(player.getName());
+            DatabaseUtil.updatePlayerDataCache(player.getName());
+            DatabaseUtil.updatePlayerVerifyCache(player.getName());
         }
     }
 }

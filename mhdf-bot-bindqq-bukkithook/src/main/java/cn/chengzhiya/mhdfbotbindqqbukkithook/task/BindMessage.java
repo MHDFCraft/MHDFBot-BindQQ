@@ -12,7 +12,7 @@ public final class BindMessage extends BukkitRunnable {
     public void run() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (DatabaseUtil.getPlayerData(player.getName()) == null) {
-                ActionUtil.runAction(player, Main.instance.getConfig().getStringList("Actions.BindMessage"));
+                ActionUtil.runAction(player, Main.instance.getConfig().getStringList("actions.bindMessage"));
             }
         }
     }

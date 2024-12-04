@@ -107,6 +107,24 @@ public final class DatabaseUtil {
     }
 
     /**
+     * 判断指定玩家ID的验证码数据是否存在
+     *
+     * @param playerName 目标玩家ID
+     */
+    public static boolean ifPlayerVerifyExist(String playerName) {
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement("select * from mhdfbot_verify where PlayerName=?;")) {
+                ps.setString(1, playerName);
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * 获取指定QQ号的绑定游戏ID列表
      *
      * @param qq 目标QQ号
@@ -140,7 +158,7 @@ public final class DatabaseUtil {
      *
      * @param playerName 目标玩家ID
      */
-    public static void updatePlayerData(String playerName) {
+    public static void updatePlayerDataCache(String playerName) {
         try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement("select * from mhdfbot_bindqq where PlayerName=?;")) {
                 ps.setString(1, playerName);
@@ -167,7 +185,7 @@ public final class DatabaseUtil {
      *
      * @param playerName 目标玩家ID
      */
-    public static void updatePlayerVerify(String playerName) {
+    public static void updatePlayerVerifyCache(String playerName) {
         try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement("select * from mhdfbot_verify where PlayerName=?;")) {
                 ps.setString(1, playerName);
@@ -187,13 +205,34 @@ public final class DatabaseUtil {
     }
 
     /**
+     * 更新指定验证码数据实例
+     *
+     * @param playerVerify 验证码数据实例
+     */
+    public static void updatePlayerVerify(PlayerVerify playerVerify) {
+        if (!ifPlayerVerifyExist(playerVerify.playerName())) {
+            getPlayerVerifyHashMap().put(playerVerify.playerName(), playerVerify);
+
+            try (Connection connection = dataSource.getConnection()) {
+                try (PreparedStatement ps = connection.prepareStatement("insert into mhdfbot_verify (PlayerName, Verify) values (?,?);")) {
+                    ps.setString(1, playerVerify.playerName());
+                    ps.setString(2, playerVerify.verify());
+                    ps.executeUpdate();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    /**
      * 获取指定玩家ID的绑定数据实例
      *
      * @param playerName 目标玩家ID
      * @return 绑定数据实例
      */
     public static PlayerData getPlayerData(String playerName) {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> updatePlayerData(playerName));
+        Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> updatePlayerDataCache(playerName));
         return getPlayerDataHashMap().get(playerName);
     }
 
@@ -204,7 +243,7 @@ public final class DatabaseUtil {
      * @return 验证码数据实例
      */
     public static PlayerVerify getPlayerVerify(String playerName) {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> updatePlayerVerify(playerName));
+        Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> updatePlayerVerifyCache(playerName));
         return getPlayerVerifyHashMap().get(playerName);
     }
 }

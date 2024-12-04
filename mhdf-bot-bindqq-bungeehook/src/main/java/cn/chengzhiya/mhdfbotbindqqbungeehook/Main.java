@@ -10,11 +10,6 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 import java.util.concurrent.TimeUnit;
 
-import static cn.chengzhiya.mhdfbotbindqqbungeehook.util.ConfigUtil.reloadConfig;
-import static cn.chengzhiya.mhdfbotbindqqbungeehook.util.ConfigUtil.saveDefaultConfig;
-import static cn.chengzhiya.mhdfbotbindqqbungeehook.util.DatabaseUtil.connectDatabase;
-import static cn.chengzhiya.mhdfbotbindqqbungeehook.util.DatabaseUtil.intiDatabase;
-
 public final class Main extends Plugin {
     public static Main instance;
 
@@ -23,20 +18,20 @@ public final class Main extends Plugin {
         // Plugin startup logic
         instance = this;
 
-        saveDefaultConfig();
-        reloadConfig();
+        ConfigUtil.saveDefaultConfig();
+        ConfigUtil.reloadConfig();
 
-        connectDatabase(new DatabaseConfig(
+        DatabaseUtil.connectDatabase(new DatabaseConfig(
                 ConfigUtil.getConfig().getString("databaseSettings.host"),
                 ConfigUtil.getConfig().getString("databaseSettings.database"),
                 ConfigUtil.getConfig().getString("databaseSettings.user"),
                 ConfigUtil.getConfig().getString("databaseSettings.password")
         ));
-        intiDatabase();
+        DatabaseUtil.intiDatabase();
 
         getProxy().getScheduler().schedule(this, () -> {
             for (ProxiedPlayer player : Main.instance.getProxy().getPlayers()) {
-                DatabaseUtil.updatePlayerVerify(player.getName());
+                DatabaseUtil.updatePlayerVerifyCache(player.getName());
             }
         }, 0L, 1L, TimeUnit.SECONDS);
 

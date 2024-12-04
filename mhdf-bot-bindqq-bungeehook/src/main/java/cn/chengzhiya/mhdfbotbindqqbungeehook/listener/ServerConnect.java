@@ -1,10 +1,13 @@
 package cn.chengzhiya.mhdfbotbindqqbungeehook.listener;
 
+import cn.chengzhiya.mhdfbotbindqqbungeehook.entity.PlayerVerify;
 import cn.chengzhiya.mhdfbotbindqqbungeehook.util.ConfigUtil;
 import cn.chengzhiya.mhdfbotbindqqbungeehook.util.DatabaseUtil;
 import net.md_5.bungee.api.event.ServerConnectEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
+
+import java.util.Random;
 
 public final class ServerConnect implements Listener {
     @EventHandler
@@ -21,7 +24,10 @@ public final class ServerConnect implements Listener {
         }
 
         if (event.getReason() == ServerConnectEvent.Reason.JOIN_PROXY) {
-            DatabaseUtil.updatePlayerVerify(event.getPlayer().getName());
+            DatabaseUtil.updatePlayerVerify(new PlayerVerify(
+                    event.getPlayer().getName(),
+                    String.valueOf(new Random().nextInt(1000, 9999)))
+            );
         }
     }
 }
